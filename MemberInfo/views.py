@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .forms import MemberInfoForm
+from .models import MemberInfo
 
 @login_required
 def add_member_info(request):
@@ -12,3 +13,17 @@ def add_member_info(request):
     else:
         form = MemberInfoForm(user=request.user)
     return render(request, 'member/add_member_info.html', {'form': form})
+
+@login_required
+def member_stats(request):
+    member = MemberInfo.objects.get(memberid=request.user)
+    bmr = member.calculate_bmr()
+    tdee = member.calculate_tdee()
+    bmi = member.calculate_bmi()
+    context = {
+        'member': member,
+        'bmr': bmr,
+        'tdee': tdee,
+        'bmi': bmi,
+    }
+    return render(request, 'member/member_stats.html', context)

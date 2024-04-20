@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Member Statistics{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <p><strong>Name:</strong> {{ member.name }}</p>
+    <p><strong>Age:</strong> {{ member.age }} years old</p>
+    <p><strong>Sex:</strong> {{ member.sex }}</p>
+    <p><strong>Height (cm):</strong> {{ member.height }} cm</p>
+    <p><strong>Weight (kg):</strong> {{ member.weight }} kg</p>
+    <p><strong>BMI:</strong> {{ bmi }}</p>
+    <p><strong>BMR:</strong> {{ bmr }}</p>
+    <p><strong>TDEE:</strong> {{ tdee }}</p>
+</body>
+</html>
+{% endblock %}
