@@ -15,7 +15,7 @@ def add_member_info(request):
     return render(request, 'member/add_member_info.html', {'form': form})
 
 @login_required
-def member_stats(request):
+def stats(request):
     member = MemberInfo.objects.get(memberid=request.user)
     bmr = member.calculate_bmr()
     tdee = member.calculate_tdee()
@@ -26,4 +26,4 @@ def member_stats(request):
         'tdee': tdee,
         'bmi': bmi,
     }
-    return render(request, 'member/member_stats.html', context)
+    return render(request, 'member/stats.html', context)
