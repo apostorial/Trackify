@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Exercise List{% endblock %}
+{% block content %}
+<div class="container">
+    <h1 class="mt-5 mb-4">Exercise List</h1>
+    <div class="row">
+        {% for exercise in exercises %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{{ exercise.gifUrl }}" class="card-img-top" alt="{{ exercise.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ exercise.name|capfirst }}</h5>
+                    <p class="card-text"><strong>Equipment:</strong> {{ exercise.equipment }}</p>
+                    <p class="card-text"><strong>Target:</strong> {{ exercise.target }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

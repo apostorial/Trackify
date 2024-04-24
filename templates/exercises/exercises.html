@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Exercise List{% endblock %}
+{% block content %}
+<body>
+    <h1>Exercise List</h1>
+    <ul>
+        {% for exercise in exercises %}
+            <li><img src="{{ exercise.gifUrl }}"></li>
+            <li>{{ exercise.equipment }}</li>
+            <li>{{ exercise.name }}</li>
+            <li>{{ exercise.target }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Equipment Info{% endblock %}
+{% block content %}
+<div class="container">
+    <h1 class="mt-5 mb-4">{{ equipment|capfirst }}</h1>
+    <div class="row">
+        {% for equipment in equipments %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{{ equipment.gifUrl }}" class="card-img-top" alt="{{ equipment.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ equipment.name|capfirst }}</h5>
+                    <p class="card-text"><strong>Equipment:</strong> {{ equipment.equipment }}</p>
+                    <p class="card-text"><strong>Target:</strong> {{ equipment.target }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

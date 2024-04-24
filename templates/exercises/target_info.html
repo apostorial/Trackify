@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Target Info{% endblock %}
+{% block content %}
+<div class="container">
+    <h1 class="mt-5 mb-4">{{ target|capfirst }}</h1>
+    <div class="row">
+        {% for target in targets %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{{ target.gifUrl }}" class="card-img-top" alt="{{ target.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ target.name|capfirst }}</h5>
+                    <p class="card-text"><strong>Equipment:</strong> {{ target.equipment }}</p>
+                    <p class="card-text"><strong>Target:</strong> {{ target.target }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
