@@ -26,16 +26,16 @@
                     <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'food' %}">Food</a>
+                    <a class="nav-link" href="#">Food</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="{% url 'exercise' %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Exercise
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="{% url 'body_part_list' %}">Body part list</a></li>
-                      <li><a class="dropdown-item" href="{% url 'equipment_list' %}">Equipment list</a></li>
-                      <li><a class="dropdown-item" href="{% url 'target_list' %}">Target list</a></li>
+                      <li><a class="dropdown-item" href="{% url 'exerciseList' exerciseType='bodyPart' %}">Body part list</a></li>
+                      <li><a class="dropdown-item" href="{% url 'exerciseList' exerciseType='equipment' %}">Equipment list</a></li>
+                      <li><a class="dropdown-item" href="{% url 'exerciseList' exerciseType='target' %}">Target list</a></li>
                     </ul>
                 </li>
             </ul>

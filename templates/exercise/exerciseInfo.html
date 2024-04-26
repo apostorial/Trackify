@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ exerciseSecondaryType }} Info{% endblock %}
+{% block content %}
+<div class="container">
+    <h1 class="mt-5 mb-4">{{ exerciseSecondaryType|capfirst }} Exercises</h1>
+    <div class="row">
+        {% for item in dataList %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{{ item.gifUrl }}" class="card-img-top" alt="{{ item|capfirst }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.name|capfirst }}</h5>
+                    <p class="card-text"><strong>Equipment:</strong> {{ item.equipment|capfirst }}</p>
+                    <p class="card-text"><strong>Target:</strong> {{ item.target|capfirst }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

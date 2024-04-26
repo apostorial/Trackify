@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Member',
     'MemberInfo',
+    'Exercise',
+    'Nutrition',
 ]
 
 MIDDLEWARE = [
