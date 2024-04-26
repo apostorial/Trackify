@@ -11,7 +11,7 @@ headers = {
 	"X-RapidAPI-Host": os.getenv("RAPIDAPI-HOST")
 }
 
-querystring = {"limit":"325"}
+query = {"limit":"325"}
 itemsPerPage = 12
 
 # Create your views here.
@@ -29,7 +29,7 @@ def exerciseList(request, exerciseType):
 
 @login_required
 def exerciseInfo(request, exerciseType, exerciseSecondaryType):
-    response = requests.get(f'https://exercisedb.p.rapidapi.com/exercises/{exerciseType}/{exerciseSecondaryType}', headers=headers, params=querystring)
+    response = requests.get(f'https://exercisedb.p.rapidapi.com/exercises/{exerciseType}/{exerciseSecondaryType}', headers=headers, params=query)
     dataList = response.json()
     paginator = Paginator(dataList, itemsPerPage)
     pageNumber = request.GET.get('page', 1)
