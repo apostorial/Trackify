@@ -4,7 +4,7 @@ from .forms import MemberInfoForm
 from .models import MemberInfo
 
 @login_required
-def add_info(request):
+def addInfo(request):
     if request.method == 'POST':
         form = MemberInfoForm(request.POST, user=request.user)
         if form.is_valid():
@@ -12,11 +12,11 @@ def add_info(request):
             return redirect('home')
     else:
         form = MemberInfoForm(user=request.user)
-    return render(request, 'member/add_info.html', {'form': form})
+    return render(request, 'member/addInfo.html', {'form': form})
 
 @login_required
 def stats(request):
-    member = MemberInfo.objects.get(memberid=request.user)
+    member = MemberInfo.objects.get(member=request.user)
     bmr = member.calculate_bmr()
     tdee = member.calculate_tdee()
     bmi = member.calculate_bmi()

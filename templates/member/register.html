@@ -15,7 +15,7 @@ form {
     </div>
 {% endif %}
 <body>
-    <form action="{% url 'register' %}" method="POST">
+    <form action="{% url 'Member:register' %}" method="POST">
       {% csrf_token %}
 
       {{ form.as_p }}

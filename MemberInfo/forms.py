@@ -12,7 +12,7 @@ class MemberInfoForm(forms.ModelForm):
 
     def save(self, commit=True):
         instance = super(MemberInfoForm, self).save(commit=False)
-        instance.memberid = self.user
+        instance.member = self.user
         if commit:
             instance.save()
         return instance

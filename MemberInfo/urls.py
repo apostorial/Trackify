@@ -20,6 +20,6 @@ from . import views
 app_name = 'MemberInfo'
 
 urlpatterns = [
-    path('add_info', views.add_info, name='add_info'),
+    path('addInfo', views.addInfo, name='addInfo'),
     path('stats', views.stats, name='stats'),
 ]

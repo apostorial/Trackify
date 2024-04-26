@@ -20,7 +20,7 @@ from . import views
 app_name = 'Member'
 
 urlpatterns = [
-    path('login_user', views.login_user, name='login'),
-    path('logout_user', views.logout_user, name='logout'),
-    path('register_user', views.register_user, name='register'),
+    path('loginUser', views.loginUser, name='login'),
+    path('logoutUser', views.logoutUser, name='logout'),
+    path('registerUser', views.registerUser, name='register'),
 ]
