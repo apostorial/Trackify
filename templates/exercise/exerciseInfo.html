@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}{{ exerciseSecondaryType }} Info{% endblock %}
+{% block title %}{{ exerciseSecondaryType|capfirst }} Exercises{% endblock %}
 {% block content %}
 <div class="container">
     <h1 class="mt-5 mb-4">{{ exerciseSecondaryType|capfirst }} Exercises</h1>
