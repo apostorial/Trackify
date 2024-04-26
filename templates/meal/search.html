@@ -26,7 +26,7 @@
             <div class="card-body">
               <h5 class="card-title"><strong>Name:</strong> {{ item.name|capfirst }}</h5>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item"><strong>Calories:</strong> {{ item.calories|floatformat:1 }}</li>
+                <li class="list-group-item"><strong>Calories (kcal):</strong> {{ item.calories|floatformat:1 }}</li>
                 <li class="list-group-item"><strong>Serving size (g):</strong> {{ item.serving_size_g }}</li>
                 <li class="list-group-item"><strong>Total fat (g):</strong> {{ item.fat_total_g }}</li>
                 <li class="list-group-item"><strong>Saturated fat (g):</strong> {{ item.fat_saturated_g }}</li>

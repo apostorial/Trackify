@@ -25,11 +25,23 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'search' %}">Nutrition</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Meals
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="{% url 'Meal:search' %}">Search for a meal</a></li>
+                      <li><a class="dropdown-item" href="{% url 'Meal:add' %}">Add a meal</a></li>
+                    </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'search' %}">Calories</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Activities
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'Activity:search' %}">Search for an activity</a></li>
+                        <li><a class="dropdown-item" href="{% url 'Activity:add' %}">Add an activity</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -45,13 +57,13 @@
         </div>
         <div>
             {% if user.is_authenticated %}
-            <a class="nav-link me-3" href="{% url 'logout' %}">Logout</a>
+            <a class="nav-link me-3" href="{% url 'Member:logout' %}">Logout</a>
             {% else %}
             <button class="btn btn-outline-primary" type="submit">
-                <a class="nav-link me-3 btn btn-outline-primary" href="{% url 'login' %}" style="margin-right: 0 !important;">Log In</a>
+                <a class="nav-link me-3 btn btn-outline-primary" href="{% url 'Member:login' %}" style="margin-right: 0 !important;">Log In</a>
             </button>
             <button class="btn btn-outline-primary" type="submit">
-                <a class="nav-link me-3 btn btn-outline-primary" href="{% url 'register' %}" style="margin-right: 0 !important;">Register</a>
+                <a class="nav-link me-3 btn btn-outline-primary" href="{% url 'Member:register' %}" style="margin-right: 0 !important;">Register</a>
             </button>
             {% endif %}
         </div>

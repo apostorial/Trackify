@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Add Meal{% endblock %}
+{% block content %}
+<div class="container mt-5">
+  <h1 class="display-4 mb-4">Add a meal</h1>
+
+  <form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="query" class="form-label">Search :</label>
+      <input type="text" class="form-control" id="query" name="query" placeholder="Pepperoni Pizza" required>
+    </div>
+    <div class="mb-3">
+      <label for="date" class="form-label">Date:</label>
+      <input type="date" class="form-control" id="date" name="date" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+  </form>
+
+  <h2>Your Meals</h2>
+  {% if userMeals %}
+    {% regroup userMeals by date as groupedMeals %}
+    {% for meals in groupedMeals %}
+    <h3>{{ meals.grouper }}</h3>
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Calories (kcal)</th>
+            <th>Proteins (g)</th>
+            <th>Fiber (g)</th>
+            <th>Sugar (g)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for meal in meals.list %}
+          <tr>
+            <td>{{ meal.name|capfirst }}</td>
+            <td>{{ meal.calories }}</td>
+            <td>{{ meal.protein }}</td>
+            <td>{{ meal.fiber }}</td>
+            <td>{{ meal.sugar }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% endfor %}
+  {% else %}
+    <p>You haven't added any meals yet.</p>
+  {% endif %}
+</div>
+{% endblock %}

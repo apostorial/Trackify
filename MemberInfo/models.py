@@ -25,7 +25,7 @@ class MemberInfo(models.Model):
         ('Extra active', 'Extra active'),
     ]
 
-    memberid = models.ForeignKey(User, on_delete=models.CASCADE)
+    member = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     goal = models.CharField(max_length=255, choices=GOALS)
     sex = models.CharField(max_length=255, choices=SEXES)
