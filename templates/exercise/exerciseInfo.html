@@ -5,7 +5,7 @@
 <div class="container">
     <h1 class="mt-5 mb-4">{{ exerciseSecondaryType|capfirst }} Exercises</h1>
     <div class="row">
-        {% for item in dataList %}
+        {% for item in page.object_list %}
         <div class="col-md-4 mb-4">
             <div class="card">
                 <img src="{{ item.gifUrl }}" class="card-img-top" alt="{{ item|capfirst }}">
@@ -18,5 +18,34 @@
         </div>
         {% endfor %}
     </div>
+</div>
+<div class="container mt-4">
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if page.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page=1">First</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page.previous_page_number }}"><span aria-hidden="true">&laquo;</span></a>
+                </li>
+            {% endif %}
+
+            {% for num in page.paginator.page_range %}
+                <li class="page-item {% if num == page.number %}active{% endif %}">
+                    <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                </li>
+            {% endfor %}
+
+            {% if page.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page.next_page_number }}"><span aria-hidden="true">&raquo;</span></a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page.paginator.num_pages }}">Last</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
 </div>
 {% endblock %}

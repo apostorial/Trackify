@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
 import requests, os
 from dotenv import load_dotenv
@@ -10,7 +11,8 @@ headers = {
 	"X-RapidAPI-Host": os.getenv("RAPIDAPI-HOST")
 }
 
-querystring = {"limit":"27"}
+querystring = {"limit":"325"}
+itemsPerPage = 12
 
 # Create your views here.
 
@@ -29,8 +31,18 @@ def exerciseList(request, exerciseType):
 def exerciseInfo(request, exerciseType, exerciseSecondaryType):
     response = requests.get(f'https://exercisedb.p.rapidapi.com/exercises/{exerciseType}/{exerciseSecondaryType}', headers=headers, params=querystring)
     dataList = response.json()
+    paginator = Paginator(dataList, itemsPerPage)
+    pageNumber = request.GET.get('page', 1)
+
+    try:
+        page = paginator.page(pageNumber)
+    except PageNotAnInteger:
+        page = paginator.page(1)
+    except EmptyPage:
+        page = paginator.page(paginator.num_pages)
+
     context = {
-        'dataList': dataList,
+        'page': page,
         'exerciseType': exerciseType,
         'exerciseSecondaryType': exerciseSecondaryType,
     }
