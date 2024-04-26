@@ -9,11 +9,11 @@ headers = {
 	"X-Api-Key": os.getenv("X-API-KEY")
 }
 
-defaultQuery = "Pepperoni Pizza"
+defaultQuery = "Rock Climbing"
 
 def search(request):
 	query = request.POST.get('query', defaultQuery)
-	url = 'https://api.api-ninjas.com/v1/nutrition?query={}'.format(query)
+	url = 'https://api.api-ninjas.com/v1/caloriesburned?activity={}'.format(query)
 	response = requests.get(url, headers=headers)
 	data = response.json()
 	context = {
@@ -21,4 +21,4 @@ def search(request):
 		'defaultQuery': defaultQuery
 	}
 
-	return render(request, 'nutrition/search.html', context)
+	return render(request, 'calories/search.html', context)

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'MemberInfo',
     'Exercise',
     'Nutrition',
+    'Calories',
 ]
 
 MIDDLEWARE = [

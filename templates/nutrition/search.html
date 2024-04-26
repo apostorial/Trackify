@@ -7,10 +7,10 @@
   <form method="post" class="mb-4">
     {% csrf_token %}
     <div class="row">
-      <div class="col-md-8"> <!-- Adjusted column width -->
+      <div class="col-md-8">
         <div class="input-group">
           <input type="text" class="form-control form-control-lg" id="query" name="query" placeholder="{{ defaultQuery }}" required>
-          <button class="btn btn-primary btn-lg" type="submit">Search</button> <!-- Moved the button outside the input group -->
+          <button class="btn btn-primary btn-lg" type="submit">Search</button>
         </div>
       </div>
     </div>

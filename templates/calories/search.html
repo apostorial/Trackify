@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Calories Burned Search{% endblock %}
+{% block content %}
+<div class="container mt-5">
+  <h1 class="display-4 mb-4">Calories Burned Search</h1>
+  <form method="post" class="mb-4">
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-md-8">
+        <div class="input-group">
+          <input type="text" class="form-control form-control-lg" id="query" name="query" placeholder="{{ defaultQuery }}" required>
+          <button class="btn btn-primary btn-lg" type="submit">Search</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  {% if data %}
+  <div class="mt-4">
+    <h2>Search Results</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      {% for item in data %}
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><strong>Name:</strong> {{ item.name|capfirst }}</h5>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Calories per hour:</strong> {{ item.calories_per_hour|floatformat:1 }}</li>
+                <li class="list-group-item"><strong>Duration (mn):</strong> {{ item.duration_minutes }}</li>
+                <li class="list-group-item"><strong>Total calories :</strong> {{ item.total_calories }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
