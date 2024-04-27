@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}My Log{% endblock %}
+{% block content %}
+<div class="container mt-5">
+<h2>Logs</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Calories Consumed (kcal)</th>
+      <th>Calories Burned (kcal)</th>
+      <th>Proteins Consumed (g)</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for log in logs %}
+    <tr>
+      <td>{{ log.date }}</td>
+      <td>{{ log.caloriesConsumed }}</td>
+      <td>{{ log.caloriesBurned }}</td>
+      <td>{{ log.proteinsConsumed }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

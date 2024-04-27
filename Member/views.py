@@ -37,7 +37,8 @@ def registerUser(request):
             return redirect("MemberInfo:addInfo")
     else:
         form = UserCreationForm()
-
-    return render(request, 'member/register.html', {
+    context = {
         'form':form,
-    })
+    }
+
+    return render(request, 'member/register.html', context)

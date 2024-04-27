@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .forms import MealForm
 from .models import Meal
 import requests, os
+from datetime import date
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -27,14 +28,13 @@ def add(request):
     form = MealForm(request.POST)
     userMeals = Meal.objects.filter(member=request.user)
     if form.is_valid():
-        date = form.cleaned_data['date']
         query = form.cleaned_data['query']
         response = requests.get(f'https://api.api-ninjas.com/v1/nutrition?query={query}', headers=headers)
         data = response.json()
         for item in data:
             meal = Meal(
                 member=request.user,
-                date=date,
+                date=date.today(),
                 name=item['name'],
                 calories=item['calories'],
                 servingSize=item['serving_size_g'],

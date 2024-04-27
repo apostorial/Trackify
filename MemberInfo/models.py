@@ -45,7 +45,7 @@ class MemberInfo(models.Model):
             bmr = (10 * self.weight) + (6.25 * self.height) - (5 * self.age) + 5
         elif self.sex == 'Female':
             bmr = (10 * self.weight) + (6.25 * self.height) - (5 * self.age) - 161
-        return bmr
+        return round(bmr, 2)
     
     def calculate_tdee(self):
         # Calculates the user's Total Daily Energy Expenditure (TDEE).
@@ -60,9 +60,20 @@ class MemberInfo(models.Model):
             tdee = bmr * 1.725
         if self.activity_level == "Extra active":
             tdee = bmr * 1.9
-        return tdee
+        return round(tdee, 2)
     
     def calculate_bmi(self):
         height_meters = self.height / 100
         bmi = self.weight / (height_meters ** 2)
-        return bmi
+        return round(bmi, 2)
+    
+    def whatShouldIDo(self):
+        if self.goal == "Lose weight":      
+            description = f"Well, considering the fact that you want to {self.goal}, you should focus on reducing the calories intake, using the data you provided us, your TDEE is {self.calculate_tdee()} kcal, this corresponds to the amount of calories your body burns at your activity level, so you will need to consume less calories that your actual TDEE, to help you do that, we suggest you to calculate"
+        elif self.goal == "Maintain weight":  
+            description = f"Well, considering the fact that you want to {self.goal}, you should focus on reducing the calories intake, using the data you provided us, your TDEE is {self.calculate_tdee()}"
+        elif self.goal == "Gain weight":  
+            description = f"Well, considering the fact that you want to {self.goal}"
+        elif self.goal == "Gain muscle":  
+            description = f"Well, considering the fact that you want to {self.goal}"
+        return description

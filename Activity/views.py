@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .forms import ActivityForm
 from .models import Activity
 import requests, os
+from datetime import date
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -34,7 +35,6 @@ def add(request):
     form = ActivityForm(request.POST)
     userActivities = Activity.objects.filter(member=request.user)
     if form.is_valid():
-        date = form.cleaned_data['date']
         query = form.cleaned_data['query']
         duration = form.cleaned_data['duration']
         response = requests.get(f'https://api.api-ninjas.com/v1/caloriesburned?activity={query}&duration={duration}', headers=headers)
@@ -48,7 +48,7 @@ def add(request):
         for item in data:
             activity = Activity(
                 member=request.user,
-                date=date,
+                date=date.today(),
                 name=item['name'],
                 caloriesPerHour=item['calories_per_hour'],
                 durationMinutes=item['duration_minutes'],

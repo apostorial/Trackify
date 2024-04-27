@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'Exercise',
     'Meal',
     'Activity',
+    'Log',
 ]
 
 MIDDLEWARE = [

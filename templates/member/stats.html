@@ -1,21 +1,32 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}Member Statistics{% endblock %}
+{% block title %}Member Stats{% endblock %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-</head>
 <body>
-    <p><strong>Name:</strong> {{ member.name }}</p>
-    <p><strong>Age:</strong> {{ member.age }} years old</p>
-    <p><strong>Sex:</strong> {{ member.sex }}</p>
-    <p><strong>Height (cm):</strong> {{ member.height }} cm</p>
-    <p><strong>Weight (kg):</strong> {{ member.weight }} kg</p>
-    <p><strong>BMI:</strong> {{ bmi }}</p>
-    <p><strong>BMR:</strong> {{ bmr }}</p>
-    <p><strong>TDEE:</strong> {{ tdee }}</p>
+  <div class="container">
+    <h1>Member Stats</h1>
+    <hr>
+    <div class="row">
+      <div class="col-md-6">
+        <p><strong>Name:</strong> {{ member.name }}</p>
+        <p><strong>Age:</strong> {{ member.age }} years old</p>
+        <p><strong>Sex:</strong> {{ member.sex }}</p>
+        <p><strong>Height (cm):</strong> {{ member.height }} cm</p>
+      </div>
+      <div class="col-md-6">
+        <p><strong>Weight (kg):</strong> {{ member.weight}} kg</p>
+        <p><strong>BMI:</strong> {{ bmi }}</p>
+        <p><strong>BMR:</strong> {{ bmr }} kcal</p>
+        <p><strong>TDEE:</strong> {{ tdee }} kcal</p>
+      </div>
+    </div>
+    <p>Let's take a quick look at your stats. As a {{ member.age }} year old {{ member.sex|lower }}, you currently weigh {{ member.weight }} kg
+      and your are {{ member.height }} cm long. Your Body Mass Index (BMI) is {{ bmi }}. Based on this information, your Basal Metabolic Rate (BMR)
+      is {{ bmr }} kcal, representing the estimated calories your body burns at rest. To maintain your current weight, your Total Daily Energy Expenditure
+      (TDEE) is {{ tdee }} kcal. Remember, these values are based on your provided information and may vary depending on your activity level and other factors.</p>
+      <h3>What should I do?</h3>
+      <p>{{ whatShouldIDo }}</p>
+  </div>
+  
 </body>
-</html>
 {% endblock %}

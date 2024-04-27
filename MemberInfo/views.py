@@ -20,10 +20,12 @@ def stats(request):
     bmr = member.calculate_bmr()
     tdee = member.calculate_tdee()
     bmi = member.calculate_bmi()
+    whatShouldIDo = member.whatShouldIDo()
     context = {
         'member': member,
         'bmr': bmr,
         'tdee': tdee,
         'bmi': bmi,
+        'whatShouldIDo': whatShouldIDo,
     }
     return render(request, 'member/stats.html', context)
