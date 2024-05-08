@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.contrib.auth.decorators import login_required
 import requests, os
 from dotenv import load_dotenv
 
@@ -16,7 +15,6 @@ itemsPerPage = 12
 
 # Create your views here.
 
-@login_required
 def exerciseList(request, exerciseType):
     response = requests.get(f'https://exercisedb.p.rapidapi.com/exercises/{exerciseType}List', headers=headers)
     dataList = response.json()
@@ -27,7 +25,6 @@ def exerciseList(request, exerciseType):
 
     return render(request, 'exercise/exerciseList.html', context)
 
-@login_required
 def exerciseInfo(request, exerciseType, exerciseSecondaryType):
     response = requests.get(f'https://exercisedb.p.rapidapi.com/exercises/{exerciseType}/{exerciseSecondaryType}', headers=headers, params=query)
     dataList = response.json()
