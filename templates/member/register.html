@@ -2,25 +2,60 @@
 {% load static %}
 {% block title %}Register{% endblock %}
 {% block content %}
-<style>
-form {
-  margin-left: 100px;
-  margin-top: 30px;
-}
-</style>
-{% if form.errors %}
+<div class="container mt-5">
+  {% if form.errors %}
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        There was an error with your form.
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      There was an error with your form.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
-{% endif %}
-<body>
-    <form action="{% url 'Member:register' %}" method="POST">
-      {% csrf_token %}
+  {% endif %}
 
-      {{ form.as_p }}
-    
+  <form action="{% url 'Member:register' %}" method="POST" class="row">
+    {% csrf_token %}
+
+    <div class="col-md-6 mb-3">
+      <label for="username" class="form-label">Username<br></label>
+      <input type="text" class="form-control" id="username" name="username" required>
+      {% if form.username.errors %}
+        <div class="text-danger">
+          {{ form.username.errors.as_text }}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <label for="email" class="form-label">Email<br></label>
+      <input type="email" class="form-control" id="email" name="email" required>
+      {% if form.email.errors %}
+        <div class="text-danger">
+          {{ form.email.errors.as_text }}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <label for="password1" class="form-label">Password<br></label>
+      <input type="password" class="form-control" id="password1" name="password1" required>
+      {% if form.password1.errors %}
+        <div class="text-danger">
+          {{ form.password1.errors.as_text }}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <label for="password2" class="form-label">Confirm Password<br></label>
+      <input type="password" class="form-control" id="password2" name="password2" required>
+      {% if form.password2.errors %}
+        <div class="text-danger">
+          {{ form.password2.errors.as_text }}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="col-md-12 text-center mt-3">
       <input type="submit" value="Submit" class="btn btn-primary">
-    </form>
-</body>
+    </div>
+  </form>
+</div>
 {% endblock %}

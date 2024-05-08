@@ -15,18 +15,19 @@
       </div>
       <div class="col-md-6">
         <p><strong>Weight (kg):</strong> {{ member.weight}} kg</p>
-        <p><strong>BMI:</strong> {{ bmi }}</p>
-        <p><strong>BMR:</strong> {{ bmr }} kcal</p>
+        <p><strong>BMI:</strong> {{ bmi }} ({{ bmi_category }})</p>  <p><strong>BMR:</strong> {{ bmr }} kcal</p>
         <p><strong>TDEE:</strong> {{ tdee }} kcal</p>
       </div>
     </div>
     <p>Let's take a quick look at your stats. As a {{ member.age }} year old {{ member.sex|lower }}, you currently weigh {{ member.weight }} kg
-      and your are {{ member.height }} cm long. Your Body Mass Index (BMI) is {{ bmi }}. Based on this information, your Basal Metabolic Rate (BMR)
-      is {{ bmr }} kcal, representing the estimated calories your body burns at rest. To maintain your current weight, your Total Daily Energy Expenditure
-      (TDEE) is {{ tdee }} kcal. Remember, these values are based on your provided information and may vary depending on your activity level and other factors.</p>
-      <h3>What should I do?</h3>
-      <p>{{ whatShouldIDo }}</p>
-  </div>
-  
-</body>
-{% endblock %}
+      and your are {{ member.height }} cm long. Your Body Mass Index (BMI) is {{ bmi }} and falls under the {{ bmi_category }} category.
+      Based on this information, your Basal Metabolic Rate (BMR) is {{ bmr }} kcal, representing the estimated calories your body burns at rest.
+      To maintain your current weight, your Total Daily Energy Expenditure (TDEE) is {{ tdee }} kcal. Remember, these values are based on your provided information and may vary depending on your activity level and other factors.</p>
+    <h3>What should I do?</h3>
+    <p>{{ whatShouldIDo }}</p>
+    
+    <h3>Educational Content</h3>
+    <p><strong>BMI Explained:</strong> Body Mass Index (BMI) is a measure of body fat based on height and weight. It's a general indicator of weight-related health risks. However, it doesn't account for muscle mass or body composition. Learn more about <a href="https://www.cdc.gov/healthyweight/assessing/bmi/index.html">BMI</a>.</p>
+    <p><strong>BMR Explained:</strong> Basal Metabolic Rate (BMR) is the estimated number of calories your body burns at rest to maintain basic functions like breathing, circulation, and organ function. It's influenced by factors like age, sex, height, weight, and body composition (muscle mass burns more calories than fat).  Knowing your BMR provides a starting point for understanding your daily calorie needs. Learn more about <a href="https://www.healthline.com/health/what-is-basal-metabolic-rate">BMR</a>.</p>
+    <p><strong>TDEE Explained:</strong> Total Daily Energy Expenditure (TDEE) is the total number of calories your body burns in a day, including your BMR and the calories burned through activity.  This includes exercise, daily movement (like walking or housework), and even the thermic effect of food (calories burned digesting and processing food). Your TDEE is a more accurate reflection of your overall calorie needs compared to just your BMR. To lose weight, you need to consume fewer calories than your TDEE; to gain weight, you need to consume more. Learn more about <a href="https://superfastdiet.com/what-is-tdee/">TDEE</a>.</p>
+    {% endblock %}

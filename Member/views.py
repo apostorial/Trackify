@@ -12,7 +12,7 @@ def loginUser(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect("home")
+            return redirect("MemberInfo:stats")
         else:
             messages.success(request, ("There was an error logging in, please try again."))
             return redirect("Member:login")

@@ -2,17 +2,117 @@
 {% load static %}
 {% block title %}Member Info{% endblock %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-</head>
-<body>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Submit</button>
+<div class="container mt-5">
+    {% if form.errors %}
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        There was an error with your form.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endif %}
+    <form method="POST" class="row">
+    {% csrf_token %}
+
+    <div class="col-md-6 mb-3">
+        <label for="name" class="form-label">Name<br></label>
+        <input type="text" class="form-control" id="name" name="name" required>
+        {% if form.name.errors %}
+          <div class="text-danger">
+            {{ form.name.errors.as_text }}
+          </div>
+        {% endif %}
+    </div>
+
+    <div class="col-md-6 mb-3">
+        <label for="goal" class="form-label">Goal</label>
+        <select class="form-select" id="goal" name="goal" required>
+          <option value="">Select your goal</option>
+          <option value="Lose weight">Lose weight</option>
+          <option value="Maintain weight">Maintain weight</option>
+          <option value="Gain weight">Gain weight</option>
+          <option value="Gain muscle">Gain muscle</option>
+        </select>
+        {% if form.goal.errors %}
+          <div class="text-danger">
+            {{ form.goal.errors.as_text }}
+          </div>
+        {% endif %}
+      </div>
+
+    <div class="col-md-6 mb-3">
+        <label for="sex" class="form-label">Sex</label>
+        <select class="form-select" id="sex" name="sex" required>
+          <option value="">Select your sex</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+        {% if form.sex.errors %}
+          <div class="text-danger">
+            {{ form.sex.errors.as_text }}
+          </div>
+        {% endif %}
+    </div>
+
+    <div class="col-md-6 mb-3">
+        <label for="age" class="form-label">Age<br></label>
+        <input type="text" class="form-control" id="age" name="age" required>
+        {% if form.age.errors %}
+          <div class="text-danger">
+            {{ form.age.errors.as_text }}
+          </div>
+        {% endif %}
+    </div>
+
+    <div class="col-md-6 mb-3">
+        <label for="height" class="form-label">Height<br></label>
+        <input type="text" class="form-control" id="height" name="height" required>
+        {% if form.height.errors %}
+          <div class="text-danger">
+            {{ form.height.errors.as_text }}
+          </div>
+        {% endif %}
+    </div>
+
+    <div class="col-md-6 mb-3">
+        <label for="weight" class="form-label">Weight<br></label>
+        <input type="text" class="form-control" id="weight" name="weight" required>
+        {% if form.weight.errors %}
+          <div class="text-danger">
+            {{ form.weight.errors.as_text }}
+          </div>
+        {% endif %}
+    </div>
+
+    <div class="col-md-6 mb-3">
+        <label for="weight_goal" class="form-label">Weight Goal<br></label>
+        <input type="text" class="form-control" id="weight_goal" name="weight_goal" required>
+        {% if form.weight_goal.errors %}
+          <div class="text-danger">
+            {{ form.weight_goal.errors.as_text }}
+          </div>
+        {% endif %}
+    </div>
+
+    <div class="col-md-6 mb-3">
+        <label for="activity_level" class="form-label">Activity Level</label>
+        <select class="form-select" id="activity_level" name="activity_level" required>
+          <option value="">Select an activity level</option>
+          <option value="Sedentary">Sedentary</option>
+          <option value="Lightly active">Lightly Active</option>
+          <option value="Moderately active">Moderately Active</option>
+          <option value="Very active">Very Active</option>
+          <option value="Extremely active">Extremely Active</option>
+        </select>
+        {% if form.activity_level.errors %}
+          <div class="text-danger">
+            {{ form.activity_level.errors.as_text }}
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="col-md-12 text-center mt-3">
+        <input type="submit" value="Submit" class="btn btn-primary">
+      </div>
+
     </form>
-</body>
-</html>
+</div>
 {% endblock %}

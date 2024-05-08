@@ -2,5 +2,53 @@
 {% load static %}
 {% block title %}Home{% endblock %}
 {% block content %}
-<h1>Index</h1>
+
+<div class="container">
+  <h1 class="display-4 text-center text-black">Welcome to Trackify!</h1>
+  <p class="lead text-center text-black"><strong>Empower Your Fitness Journey - Track, Plan, Achieve.</strong></p>
+</div>
+
+<section class="features py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Enhance Your Fitness Journey</h2>
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <div class="card">
+          <img src="{% static 'exercise.png' %}" class="card-img-top img-fluid" alt="Browse Exercises">
+          <div class="card-body">
+            <h3 class="card-title">Browse Exercises</h3>
+            <p class="card-text">Find a vast library of exercises categorized by muscle groups, equipment used, and target areas. Discover new workouts or refine your existing routines.</p>
+          </div>
+          <br>
+        </div>
+      </div>
+      <div class="col-md-4 mb-3">
+        <div class="card">
+          <img src="{% static 'meal.jpg' %}" class="card-img-top img-fluid" alt="Track Your Meals">
+          <div class="card-body">
+            <h3 class="card-title">Track Your Meals</h3>
+            <p class="card-text">Log your meals with ease and gain valuable insights into your calorie intake and macronutrient distribution. Stay on top of your nutrition goals and make informed dietary choices.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-3">
+        <div class="card">
+          <img src="{% static 'activity.png' %}" class="card-img-top img-fluid" alt="Track Your Activities">
+          <div class="card-body">
+            <h3 class="card-title">Track Your Activities</h3>
+            <p class="card-text">Monitor your daily activities, from running and swimming to cycling and dancing. Analyze your progress over time and stay motivated by visualizing your achievements.</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="call-to-action bg-primary text-white py-5">
+    <div class="text-center">
+        <h2 class="display-6">Ready to Get Started?</h2>
+        <br>
+        <a href="{% url 'Member:register' %}" class="btn btn-light btn-lg">Sign Up Now</a>
+    </div>
+</section>
 {% endblock %}

@@ -68,12 +68,13 @@ class MemberInfo(models.Model):
         return round(bmi, 2)
     
     def whatShouldIDo(self):
-        if self.goal == "Lose weight":      
-            description = f"Well, considering the fact that you want to {self.goal}, you should focus on reducing the calories intake, using the data you provided us, your TDEE is {self.calculate_tdee()} kcal, this corresponds to the amount of calories your body burns at your activity level, so you will need to consume less calories that your actual TDEE, to help you do that, we suggest you to calculate"
-        elif self.goal == "Maintain weight":  
-            description = f"Well, considering the fact that you want to {self.goal}, you should focus on reducing the calories intake, using the data you provided us, your TDEE is {self.calculate_tdee()}"
-        elif self.goal == "Gain weight":  
-            description = f"Well, considering the fact that you want to {self.goal}"
-        elif self.goal == "Gain muscle":  
-            description = f"Well, considering the fact that you want to {self.goal}"
+        if self.goal == "Lose weight":
+            description = f"Well, considering the fact that you want to {self.goal}, you should focus on reducing your calorie intake. Using the data you provided, your TDEE is {self.calculate_tdee()} kcal. This corresponds to the amount of calories your body burns at your activity level. To lose weight, you'll need to consume fewer calories than your TDEE. We suggest a deficit of around 500 kcal per day. This will help you lose weight at a healthy rate."
+        elif self.goal == "Maintain weight":
+            description = f"Well, considering the fact that you want to {self.goal}, you should focus on consuming around your TDEE. Using the data you provided, your TDEE is {self.calculate_tdee()} kcal. This is the amount of calories your body burns at your activity level. Maintaining a balanced diet and exercise routine will help you maintain your current weight."
+        elif self.goal == "Gain weight":
+            description = f"Well, considering the fact that you want to {self.goal}, you should focus on increasing your calorie intake. Using the data you provided, your TDEE is {self.calculate_tdee()} kcal. To gain weight, you'll need to consume more calories than your TDEE. We suggest a surplus of 500-1000 kcal per day. This will help you gain weight at a healthy rate of around a kilogram a week."
+        elif self.goal == "Gain muscle":
+            description = f"Well, considering the fact that you want to {self.goal}, you should focus on increasing your calorie intake and incorporating strength training exercises. Using the data you provided, your TDEE is {self.calculate_tdee()} kcal. To gain muscle, you'll need to consume a slight surplus of calories and prioritize protein intake. We suggest a surplus of 100-400 kcal per day, with a focus on consuming around 1.5 to 2 gram of protein per kilogram of bodyweight. Strength training exercises will help you build muscle mass."
+
         return description

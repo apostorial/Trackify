@@ -9,7 +9,7 @@ def addInfo(request):
         form = MemberInfoForm(request.POST, user=request.user)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('MemberInfo:stats')
     else:
         form = MemberInfoForm(user=request.user)
     return render(request, 'member/addInfo.html', {'form': form})
