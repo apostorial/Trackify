@@ -35,10 +35,6 @@ class MemberInfo(models.Model):
     weight_goal = models.FloatField(default=50)
     activity_level = models.CharField(max_length=255, choices=ACTIVITY_LEVELS)
 
-    class Meta:
-        verbose_name = 'Member'
-        verbose_name_plural = 'Members'
-
     def calculate_bmr(self):
         # Calculates the user's Basal Metabolic Rate (BMR).
         if self.sex == 'Male':
