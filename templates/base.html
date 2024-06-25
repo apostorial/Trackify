@@ -36,7 +36,7 @@
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Meals
                     </a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu dropdown-menu-end">
                       <li><a class="dropdown-item" href="{% url 'Meal:search' %}">Search for a meal</a></li>
                       <li><a class="dropdown-item" href="{% url 'Meal:add' %}">View/Add a meal</a></li>
                     </ul>
@@ -51,7 +51,7 @@
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Activities
                     </a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu dropdown-menu-end">
                         <li><a class="dropdown-item" href="{% url 'Activity:search' %}">Search for an activity</a></li>
                         <li><a class="dropdown-item" href="{% url 'Activity:add' %}">View/Add an activity</a></li>
                     </ul>
@@ -65,7 +65,7 @@
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Exercises
                     </a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu dropdown-menu-end">
                       <li><a class="dropdown-item" href="{% url 'exerciseList' exerciseType='bodyPart' %}">Body part list</a></li>
                       <li><a class="dropdown-item" href="{% url 'exerciseList' exerciseType='equipment' %}">Equipment list</a></li>
                       <li><a class="dropdown-item" href="{% url 'exerciseList' exerciseType='target' %}">Target list</a></li>
@@ -79,7 +79,7 @@
                           Account
                         {% endif %}
                     </a>                      
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu dropdown-menu-end">
                         <li>
                             {% if user.is_authenticated %}
                             <li class="nav-item"><a class="dropdown-item" aria-current="page" href="{% url 'Log:list' %}">My log</a></li>
